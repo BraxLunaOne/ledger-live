@@ -1,4 +1,4 @@
-import { AmountRequired } from "./index";
+import { AmountRequired, CurrencyNotSupported } from "./index";
 
 function functionA() {
   throw new AmountRequired();
@@ -35,7 +35,7 @@ describe("custom errors", () => {
 
   test("error with custom fields", () => {
     try {
-      throw new AmountRequired("YO", { foo: 42 });
+      throw new CurrencyNotSupported("YO", { currencyName: "foo" });
     } catch (e: any) {
       expect(e.foo).toEqual(42);
     }
